@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import prisma from '../utils/db';
+import prisma from '@/app/utils/db';
 
 export default function SeedDatabase() {
   async function postData() {

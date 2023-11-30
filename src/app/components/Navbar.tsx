@@ -16,7 +16,7 @@ const links: linkProps[] = [
   { name: 'Inicio', href: '/home' },
   { name: 'Tv Shows', href: '/home/shows' },
   { name: 'Películas', href: '/home/movies' },
-  { name: 'Nuevo', href: '/home/recently' },
+  { name: 'Estrenos', href: '/home/recently' },
   { name: 'Mi lista', href: '/home/user/list' },
 ];
 

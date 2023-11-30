@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../utils/auth';
+import { authOptions } from '@/app/utils/auth';
 import { redirect } from 'next/navigation';
-import Navbar from '../components/Navbar';
+import Navbar from '@/app/components/Navbar';
 
 export default async function HomeLayout({
   children,
