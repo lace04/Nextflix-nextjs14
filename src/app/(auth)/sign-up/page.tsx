@@ -1,16 +1,25 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import { GithubIcon } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import GoogleIcon from '../../../../public/google.svg';
+import GithubSignInButton from '@/app/components/GithubSignInButton';
+import GoogleSignInButton from '@/app/components/GoogleSignInButton';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/utils/auth';
+import { redirect } from 'next/navigation';
 
-export default function SignUp() {
+export default async function SignUp() {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    return redirect('/home');
+  }
   return (
-    <div className='mt-24 rounded min-w-[450px] bg-black/70 py-20 px-6 md:mt-0 md:max-w-sm md:px-[70px]'>
+    <div className='mt-24 rounded min-w-[450px] min-h-[600px] bg-black/70 py-20 px-6 md:mt-0 md:max-w-sm md:px-[70px]'>
       <div className='flex flex-col'>
-        <form>
-          <h1 className='text-3xl font-semibold text-white'>Registrarse</h1>
+        <form method='post' action='/api/auth/signin'>
+          <h1 className='text-3xl font-semibold text-white mt-[68px]'>
+            Registrarse
+          </h1>
           <div className='space-y-5 mt-5'>
             <Input
               type='email'
@@ -19,6 +28,7 @@ export default function SignUp() {
               placeholder='Email o número de teléfono'
               className='bg-[#333] placeholder:text-xs placeholder:text-gray-400 w-full inline-block'
             />
+
             <Button
               className='w-full h-12 text-base'
               variant='red'
@@ -36,12 +46,8 @@ export default function SignUp() {
           </Link>
         </div>
         <div className='flex w-full justify-center items-center gap-x-3 mt-6'>
-          <Button variant='outline' size='icon'>
-            <GithubIcon className='w-5 h-5' />
-          </Button>
-          <Button variant='outline' size='icon'>
-            <Image src={GoogleIcon} alt='Google Icon' className='w-7 h-7' />
-          </Button>
+          <GithubSignInButton />
+          <GoogleSignInButton />
         </div>
       </div>
     </div>
