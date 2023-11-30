@@ -11,9 +11,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { signOut, useSession } from 'next-auth/react';
+import avatar from '../../../public/avatar.png';
 
 export default function UserNav() {
   const { data: session, status } = useSession();
+  // console.log(session?.user?.image);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,7 +42,9 @@ export default function UserNav() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => signOut()}>Sign out</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => signOut()} className='cursor-pointer'>
+          Cerrar sesión
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
