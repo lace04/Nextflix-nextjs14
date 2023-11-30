@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 
-interface iAppProps {
+interface PlayVideoModalProps {
   title: string;
   overview: string;
   youtubeUrl: string;
@@ -26,7 +26,7 @@ export default function PlayVideoModal({
   age,
   duration,
   release,
-}: iAppProps) {
+}: PlayVideoModalProps) {
   return (
     <Dialog open={state} onOpenChange={() => changeState(!state)}>
       <DialogContent className='sm:max-w-[425px]'>
